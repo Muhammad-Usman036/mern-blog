@@ -1,7 +1,19 @@
 // const express = require('express');
-import express from 'express';
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from 'dotenv';
+// const mongoose = require('mongoose');
+dotenv.config();
+// console.log('MongoDB connection string:', process.env.MONGO);
+
+mongoose
+  .connect(process.env.MONGO)
+  // .connect("mongodb+srv://usman036:usman036@mern-blog.o5t1u.mongodb.net/mydatabase?retryWrites=true&w=majority")
+  .then(() => {
+    console.log("database is connected");
+  }).catch((err)=>console.log(err));
 
 const app = express();
-app.listen(3000,()=>{
-    console.log('Server is running on port 3000!!');
-})
+app.listen(3000, () => {
+  console.log("Server is running on port 3000!!");
+});
